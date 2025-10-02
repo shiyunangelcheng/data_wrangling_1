@@ -1,0 +1,11 @@
+---
+title: "Data Import"
+output: github_document
+---
+
+
+```{r}
+library(tidyverse)
+```
+Let's import a dataset 
+
