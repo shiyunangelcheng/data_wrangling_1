@@ -7,5 +7,76 @@ output: github_document
 ```{r}
 library(tidyverse)
 ```
-Let's import a dataset 
+Let's import a dataset
+
+```{r}
+litters_df=
+  read_csv("data/FAS_litters.csv")
+```
+Look at your data! 
+```{r}
+names(litters_df)
+```
+#shortcut to add code chunk: Ctrl +Option+I
+Update the names in 'litters_df'.
+```{r}
+litters_df=
+  janitor::clean_names(litters_df)
+```
+
+```{r}
+litters_df
+```
+
+Sometimes skimming data is neat? 
+```{r}
+skimr::skim(litters_df)
+```
+## Fix the missingness
+```{r}
+litters_df=
+  read_csv("data/FAS_litters.csv", na=c("NA,".",""),skip)
+```
+
+## Import PUPS DATA 
+```{r}
+pups_df=
+  read_csv(
+    "data/FAS_pups.csv", 
+    skip = 3
+    na=c("NA", ".", "" 
+  )
+pups_df = 
+  janitor::clean_names(pups_df)
+```
+## Okay what avout excel 
+CSVs are really great but sometimes you get an excel file 
+```{r}
+mlb_df=
+  read_excel("data/mlb11.xlsx")
+```
+
+Import LorR word counts 
+```{r}
+fotr_df=
+  read_excel("data/LotR_Words.xlsx", range = "B3:D6")
+```
+
+## SAS? 
+
+Import the PULSE data
+```{r}
+pulse_df = read_sas("data/public_pulse_data.sas7bdat")
+```
+## WHy do i hate read.csv so much?? 
+
+```{r}
+litters_df_base = 
+  read.csv("data/FAS_litters.csv")
+```
+## What avout data exporting? 
+```{r}
+write_csv(fotr_df, "data/fotr_df.csv")
+```
+
 
